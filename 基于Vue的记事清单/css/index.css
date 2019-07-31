@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative;
+}
+
+.navbar,
+.header {
+    text-align: center;
+}
+
+.navbar {
+    padding: 10px 0;
+    background-color: orangered;
+    color: white;
+}
+
+.navbar>h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header {
+    padding: 20px 0;
+    font-size: 18px;
+    color: gray;
+}
+
+.wrap {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+#task-form input,
+#task-form button {
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+#task-form .wrap * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#task-form input,
+#task-form textarea {
+    display: block;
+    width: 100%;
+}
+
+#task-form textarea {
+    resize: none;
+}

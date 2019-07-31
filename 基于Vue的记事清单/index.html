@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搞事情</title>
+
+    <link href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="navbar">
+            <h1>记事清单</h1>
+        </div>
+        <div class="header">
+            vue清单实战
+        </div>
+        <form id="task-form" @submit.prevent="merge">
+            <div class="wrap">
+                <input id="form-input" type="text" v-model="current.title">
+                <div class="detail">
+                    <textarea v-model="current.desc"></textarea>
+                    <input type="datetime-local" v-model="current.remind">
+                    <button type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+        <div class="task-list">
+            <div class="wrap">
+                未完成
+                <task v-for="(item, index) in list" v-if="!item.completed" :item="item"></task>
+            </div>
+        </div>
+        <div class="task-list">
+            <div class="wrap">
+                已完成
+                <div class="complete item" v-for="(item, index) in list" v-if="item.completed">
+                    {{item.title}}
+                    <button type="button" @click="toRemove(item.id)">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="tpl-task">
+        <div class="item">
+            {{item.title}}
+            <button type="button" @click="action('toggle_detail',item)">详情</button>
+            <button type="button" @click="action('toModify',item)">更新</button>
+            <button type="button" @click="action('toComplete',item.id)">完成</button>
+            <button type="button" @click="action('toRemove',item.id)">删除</button>
+            <div v-if="item.showDesc">
+                {{item.desc || '暂无详情'}}
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="js/myStorage.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
